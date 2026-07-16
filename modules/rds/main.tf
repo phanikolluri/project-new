@@ -51,7 +51,7 @@ resource "aws_db_instance" "main" {
   allocated_storage    = 10
   db_name              = "wmp-db"
   engine               = "postgres"
-  engine_version       = "16.0"
+  engine_version       = "16.13"
   instance_class       = "db.t3.micro"
   username             = "wmpuser"
   password             = "WmpUser#1234"
