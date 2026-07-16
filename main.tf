@@ -10,3 +10,6 @@ terraform {
   }
 }
 
+module "databases" {
+  source = "./modules/rds"
+}
