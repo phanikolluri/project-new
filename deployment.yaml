@@ -23,7 +23,7 @@ kind: ConfigMap
 metadata:
   name: auth-service-config
 data:
-  DB_HOST: "wmp-db.ca7so8yw8r9s.us-east-1.rds.amazonaws.com"
+  DB_HOST: "wmpdb.ca7so8yw8r9s.us-east-1.rds.amazonaws.com"
   DB_PORT: "5432"
   DB_USER: "auth_svc_user"
   DB_PASSWORD: "localdev123"
@@ -63,7 +63,7 @@ kind: ConfigMap
 metadata:
   name: analytics-service-config
 data:
-  DATABASE_URL: "postgresql+asyncpg://analytics_svc_user:localdev123@wmp-db.ca7so8yw8r9s.us-east-1.rds.amazonaws.com:5432/wmp"
+  DATABASE_URL: "postgresql+asyncpg://analytics_svc_user:localdev123@wmpdb.ca7so8yw8r9s.us-east-1.rds.amazonaws.com:5432/wmp"
   DB_SCHEMA: "analytics_schema"
   LOG_LEVEL: "INFO"
 
@@ -98,7 +98,7 @@ metadata:
   name: portfolio-service-config
 data:
   SPRING_PROFILES_ACTIVE: "production"
-  SPRING_DATASOURCE_URL: "jdbc:postgresql://wmp-db.ca7so8yw8r9s.us-east-1.rds.amazonaws.com:5432/wmp?currentSchema=portfolio_schema"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://wmpdb.ca7so8yw8r9s.us-east-1.rds.amazonaws.com:5432/wmp?currentSchema=portfolio_schema"
   SPRING_DATASOURCE_USERNAME: "portfolio_svc_user"
   SPRING_DATASOURCE_PASSWORD: "localdev123"
   JWT_SECRET: "myDefaultSuperSecretKeyThatIsAtLeast256BitsLongForHS256Algorithm"
