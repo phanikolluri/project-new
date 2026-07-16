@@ -10,17 +10,17 @@ terraform {
 
 
 resource "aws_db_parameter_group" "main" {
-  name_prefix = "wmp-db"
+  name_prefix = "wmpdb"
   family      = "postgres16"
 }
 
 
 resource "aws_db_subnet_group" "main" {
-  name       = "wmp-db"
+  name       = "wmpdb"
   subnet_ids = ["subnet-0d6e6257f7a9c428c", "subnet-0c0ea58946872d97d"]
 
   tags = {
-    Name = "wmp-db"
+    Name = "wmpdb"
   }
 }
 
@@ -49,7 +49,7 @@ resource "aws_security_group" "main" {
 
 resource "aws_db_instance" "main" {
   allocated_storage    = 10
-  db_name              = "wmp-db"
+  db_name              = "wmpdb"
   engine               = "postgres"
   engine_version       = "16.13"
   instance_class       = "db.t3.micro"
@@ -67,7 +67,7 @@ resource "null_resource" "schema_load" {
   provisioner "local-exec" {
     command = <<EOF
 curl -o global-bundle.pem https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
-PGPASSWORD='WmpUser#1234' /usr/pgsql-16/bin/psql  'host=${aws_db_instance.main.address} port=5432 dbname=wmp-db user=wmpuser sslmode=verify-full sslrootcert=./global-bundle.pem' <${path.module}/setup.sql
+PGPASSWORD='WmpUser#1234' /usr/pgsql-16/bin/psql  'host=${aws_db_instance.main.address} port=5432 dbname=wmpdb user=wmpuser sslmode=verify-full sslrootcert=./global-bundle.pem' <${path.module}/setup.sql
 EOF
   }
 }
