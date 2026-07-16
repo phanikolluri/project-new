@@ -48,6 +48,7 @@ resource "aws_security_group" "main" {
 
 
 resource "aws_db_instance" "main" {
+  identifier           = "wmpdb"
   allocated_storage    = 10
   db_name              = "wmpdb"
   engine               = "postgres"
